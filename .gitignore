@@ -1,0 +1,12 @@
+# 井字號開頭是註解
+
+# *是萬用字元 (代表副檔名為.jpg的檔案完全忽視)
+
+# 也可以是標示資料夾
+
+*.jpg
+.settings/
+bin/
+.classpath
+.project
+target/  
