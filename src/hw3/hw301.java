@@ -19,19 +19,17 @@ public class hw301 {
 		//triangle array內存入3個大於0的整數
 		do {
 			for(int i = 0; i <= 2; i++) {
-				if(s.hasNextInt() && (tri[i]= s.nextInt()) > 0) {
-//					tri[i]= s.nextInt();
-				}	
-				else {
-					System.out.println("請輸入大於0的整數");
+				if(s.hasNextInt()){
+					tri[i]= s.nextInt();
+					while(tri[i] < 1){						
+						System.out.println("請輸入大於0的整數");
+						tri[i]= s.nextInt();
+					}
 				}
 			}
 			
 			hw3.bubbleSort(tri);
 			
-			if((tri[1] + tri[2]) < tri[0]) {
-				System.out.println("不是三角形");
-			}
 		}while(tri[2] < 1);
 		
 		switch(hw3.distinguishTriangle(tri)) {
@@ -55,8 +53,12 @@ public class hw301 {
 				System.out.println("等腰三角形");
 				break;
 				
-			//其他三角形
+			//不是三角形
 			case 4 :
+				System.out.println("不是三角形");
+				break;
+			//其他三角形
+			case 5 :
 				System.out.println("其他三角形");
 				break;
 		}
@@ -134,10 +136,15 @@ public class hw301 {
 		else if((arr[0] == arr[1] || arr[0] == arr[2] || arr[1] == arr[2]) && eq_tri == false && right_tri == false) {
 			return 3;
 		}
-		// 其它三角形
-		else {
+		// 不是三角形
+		else if((arr[1] + arr[2]) < arr[0]) {
 			return 4;
 		}
+		// 其它三角形
+		else {
+			return 5;
+		}
+		
 	}
 	
 	
